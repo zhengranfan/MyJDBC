@@ -4,11 +4,13 @@ import java.beans.PropertyVetoException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+import org.junit.Test;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
 public class C3P0Test {
-	public static void main(String[] args) throws PropertyVetoException, SQLException {
+	@Test
+	public void fun1() throws PropertyVetoException, SQLException {
 		ComboPooledDataSource comboPooledDataSource = new ComboPooledDataSource();
 		comboPooledDataSource.setDriverClass("com.mysql.cj.jdbc.Driver");
 		comboPooledDataSource.setUser("root");
@@ -22,8 +24,15 @@ public class C3P0Test {
 		
 		Connection connection = comboPooledDataSource.getConnection();
 		System.out.print(connection);
-		connection.close();
-		
+		connection.close();	
 	}
+	
+	@Test
+	public  void fun2() throws SQLException {
+	 ComboPooledDataSource pool = new ComboPooledDataSource();
+	 Connection connection = pool.getConnection();
+	 System.out.print(connection);
+	 connection.close();
+}
 
 }
